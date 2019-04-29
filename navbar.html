@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Responsive Navbar</title>        
+    <style>
+        body{
+            padding: 0;
+            margin: 0;
+            font-family: cursive;
+        }
+        .container{
+            background-color: cadetblue;
+            height: 100px;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+        .menu{
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            align-items: center;
+            height: 30px;
+            cursor: pointer;
+        }
+        .navbar{
+            background-color: white;
+            height:3px;
+            width: 30px;
+        }
+        @media only screen and (min-width: 424px){
+            .menu{
+                visibility: hidden;
+            }            
+        }
+        @media only screen and (max-width: 424px){
+            .menuoption{
+                visibility: hidden;
+            }            
+        }
+        .sidemenu{
+            position: relative;
+            /*visibility: hidden;*/
+            right: 0;
+            background-color: cadetblue;            
+            height: calc(100vh - 100px);
+            width: 0px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            align-items: center;
+            transition-duration: .5s;
+            transition-property: width;
+            transition-timing-function: linear;
+            overflow: hidden;
+        }
+        .sidemenuoption{
+            width: 100px
+        }
+        .showTransiton{
+            width: 200px;
+            visibility: visible;
+        }
+    </style>
+    <script type="text/javascript">
+        var toggle=false;
+        function showNavbar(){
+            var e = document.querySelector('.sidemenu');
+            if(!toggle){
+                e.classList.add('showTransiton');
+            }
+            else{
+                e.classList.remove('showTransiton');   
+            }
+            toggle=!toggle;
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="menu" onclick="showNavbar()">
+            <div class="navbar"></div>
+            <div class="navbar"></div>
+            <div class="navbar"></div>
+        </div>
+        <div class="menuoption">Home</div>
+        <div class="menuoption">Careers</div>
+        <div class="menuoption">About Us</div>
+        <div class="menuoption">Contact Us</div>        
+    </div>
+    <div class="sidemenu">
+        <div class="sidemenuoption">Home</div>
+        <div class="sidemenuoption">Careers</div>
+        <div class="sidemenuoption">About Us</div>
+        <div class="sidemenuoption">Contact Us</div>
+    </div>
+</body>
+</html>
